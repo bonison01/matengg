@@ -1,0 +1,31 @@
+.rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  font-size: 30px;
+  gap: 4px;
+}
+
+.rating .star {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: gray;
+  user-select: none;
+}
+
+/* Filled Stars - Gradient */
+.rating .star.filled {
+  background: linear-gradient(to bottom, #7EE501 0%, #eeee35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #7EE501; /* Fallback */
+}
+
+/* Hover Effect - Gradient */
+.rating .star.hovered,
+.rating .star:hover {
+  background: linear-gradient(to bottom, #6fc902 0%, #d8d830 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #6fc902; /* Fallback */
+}

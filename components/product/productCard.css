@@ -1,0 +1,59 @@
+
+
+.details-btn {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgba(91, 90, 91, 0.355);
+  backdrop-filter: blur(2px); 
+  -webkit-backdrop-filter: blur(2px); 
+}
+
+.details-sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-sign svg {
+  width:1.2rem;
+}
+
+.details-text {
+  position: absolute;
+  top: 15%;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition-duration: .3s;
+}
+
+.details-btn:hover {
+  width: 6rem;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.details-btn:hover .details-sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-inline: 6px;
+}
+
+.details-btn:hover .details-text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+
+.details-btn:active {
+  transform: translate(2px ,2px);
+}

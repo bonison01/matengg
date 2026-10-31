@@ -1,0 +1,24 @@
+/* BusinessList.module.css */
+
+.bannerHover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.bannerHover:hover {
+  transform: scale(1.03);
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animatedCard {
+  animation: fadeInSlideUp 0.4s ease forwards;
+}

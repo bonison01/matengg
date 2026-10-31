@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.logo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 6rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.letter {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: reveal 0.3s ease-out forwards;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tagline fade-in animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.7s ease-out forwards;
+  animation-delay: 1s; 
+}
+
+.tagline {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.logo-move {
+    animation: logo-move 1.7s cubic-bezier(0.7, 0, 1, 1) forwards;
+}
+
+@keyframes logo-move {
+    0% {
+      
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+
+        transform: translate(-42vw, -45vh); 
+        opacity: 0.9;
+    }
+}
+
+.shrink {
+    animation: shrink 1.7s cubic-bezier(0.7, 0, 1, 1) forwards;
+}
+
+@keyframes shrink {
+    0% {
+        gap: 5px;
+        font-size: 6rem; 
+        opacity: 1;
+    }
+    100% {
+        gap: 0px;
+        font-size: 2rem; 
+        opacity: 0.9;
+    }
+}
+
+
+.tagline-move {
+    animation: tagline-move 1.7s cubic-bezier(0.7, 0, 1, 1) forwards;
+}
+
+@keyframes tagline-move {
+    0% {
+        font-size: 1.6rem;
+        opacity: 1;
+
+    }
+    100% {
+        font-size: 0.56rem;
+        opacity: 0.9; 
+    }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    font-size: 3.4rem;
+    gap: 2px;
+  }
+
+  @keyframes shrink {
+    0% {
+      gap: 2px;
+      font-size: 3.4rem;
+      opacity: 1;
+    }
+    100% {
+      gap: 0px;
+      font-size: 1.8rem;
+      opacity: 0.9;
+    }
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+  }
+
+  @keyframes tagline-move {
+    0% {
+      font-size: 0.9rem;
+      opacity: 1;
+    }
+    100% {
+      font-size: 0.5rem;
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes logo-move {
+    0% {
+      
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+
+        transform: translate(-29vw, -42.5vh); 
+        opacity: 0.9;
+    }
+}
+}

@@ -1,0 +1,265 @@
+/* === MODAL OVERLAY === */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* === MODAL CONTENT CARD === */
+.modalContent {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: 95%;
+  max-width: 820px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: slideUp 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modalContent h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #14710f;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+/* === FORM GROUPS === */
+.formGroupRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.formGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.formGroup label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background-color: #fafafa;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  border-color: #14710f;
+  background-color: #fff;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.formGroup input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #14710f;
+  margin-top: 4px;
+}
+
+/* === DOWNLOAD BUTTONS === */
+.downloadButtons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #14710f;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.downloadButton svg {
+  stroke: white;
+}
+
+.downloadButton:hover {
+  background-color: #0f5c0d;
+  transform: translateY(-1px);
+}
+
+.downloadButton:active {
+  transform: scale(0.98);
+}
+
+/* === SAVE / CANCEL BUTTONS === */
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.buttonSave {
+  background-color: #14710f !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 8px 18px !important;
+  border-radius: 8px !important;
+  transition: background-color 0.2s ease;
+}
+
+.buttonSave:hover {
+  background-color: #0f5c0d !important;
+}
+
+.buttonCancel {
+  background-color: #ddd !important;
+  color: #333 !important;
+  font-weight: 500;
+  padding: 8px 18px !important;
+  border-radius: 8px !important;
+  transition: background-color 0.2s ease;
+}
+
+.buttonCancel:hover {
+  background-color: #bbb !important;
+}
+
+/* === SAVING OVERLAY === */
+.savingOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.savingText {
+  background: #14710f;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* === SCROLLBAR === */
+.modalContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background-color: #14710f33;
+  border-radius: 4px;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background-color: #14710f55;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .formGroupRow {
+    flex-direction: column;
+  }
+
+  .modalContent {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .downloadButtons {
+    flex-direction: column;
+  }
+
+  .modalActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .buttonSave,
+  .buttonCancel {
+    width: 100%;
+  }
+}
+/* === FORM SECTIONS === */
+.section {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 22px;
+  background-color: #fafafa;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.section:hover {
+  background-color: #fefefe;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #14710f;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #14710f22;
+  padding-bottom: 4px;
+  letter-spacing: 0.3px;
+}

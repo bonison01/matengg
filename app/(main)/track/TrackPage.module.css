@@ -1,0 +1,166 @@
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background-color: #f6f6f6;
+  min-height: 100vh;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  color: #000; /* ✅ All text inside is black by default */
+}
+
+.title {
+  font-size: 1.6rem;
+  color: #000; /* black title */
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #222;
+  margin-bottom: 22px;
+}
+
+.searchBar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.searchBar input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  color: #000;
+}
+
+.searchBar input:focus {
+  border-color: #14710f;
+}
+
+/* === Result Box === */
+.resultBox {
+  margin-top: 20px;
+  text-align: left;
+  background-color: #fafafa;
+  padding: 18px 20px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  color: #000;
+}
+
+.sectionTitle {
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 14px 0 8px;
+  border-bottom: 2px solid #14710f33; /* subtle green accent line */
+  padding-bottom: 4px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.infoRow span {
+  color: #111;
+}
+
+.infoRow strong {
+  color: #000;
+}
+
+.status {
+  font-weight: 700;
+}
+
+.status.pending {
+  color: #555;
+}
+
+.status.outfordelivery {
+  color: #555;
+}
+
+.status.delivered {
+  color: #000;
+}
+
+.footerNote {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #111;
+}
+.finalChargeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 0 12px;
+}
+
+.dropdownToggle {
+  background: transparent;
+  border: none;
+  color: #14710f;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.dropdownToggle:hover {
+  color: #0f5c0d;
+  text-decoration: underline;
+}
+
+.priceDetailsBox {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px 14px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 0.92rem;
+  color: #000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.pendingText {
+  color: #777;
+  font-style: italic;
+  font-size: 0.9rem;
+}

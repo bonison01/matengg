@@ -1,0 +1,57 @@
+
+.loop-slider {
+  .inner {
+    display: flex;
+    width: fit-content;
+    animation-name: loop;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: var(--direction);
+    animation-duration: var(--duration);
+  }
+
+  &:hover .inner {
+    animation-play-state: paused;
+  }
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  background-color: #42573c;
+
+  span {
+    font-size: 1.2rem;
+    color: #64748bd5;
+    padding-right: 4px;
+  }
+}
+
+.fade {
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    #40573a,
+    transparent 12%,
+    transparent 40%,
+    #30432bf3 70%,
+    transparent 80%,
+    #253720
+  );
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+

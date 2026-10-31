@@ -1,0 +1,249 @@
+/* General container styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.card {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.cardHeader {
+  margin-bottom: 1rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;  /* Style for the "Cargo Booking" header */
+}
+
+/* Style for the title of the Cargo Booking form */
+.cardHeader .text-xl {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #007bff;  /* Blue color for the header */
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  margin-bottom: 1rem;
+}
+
+/* Success Message */
+.successMessage {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+}
+
+/* Subheaders like "Sender Details" */
+.subHeader {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+/* Button styles for Standard / Express toggle */
+.container button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  border: 2px solid #007bff;  /* Increased border thickness for better visibility */
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Standard/Express button toggles */
+.container .standardBtn,
+.container .expressBtn {
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.2s ease;
+  width: 100%;
+}
+
+.container .standardBtn:hover,
+.container .expressBtn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slight grow effect on hover */
+}
+
+.container .standardBtn.active,
+.container .expressBtn.active {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* In cargo-booking.module.css */
+.standardBtn,
+.expressBtn {
+  background-color: white;
+  color: black;
+  border: 2px solid #d1d5db;
+}
+
+.standardBtn.active,
+.expressBtn.active {
+  background-color: #1e40af; /* Blue background */
+  color: white;
+}
+
+.standardBtn:hover,
+.expressBtn:hover {
+  background-color: #f3f4f6;
+}
+
+/* Styling for the Product Photo */
+.container .productImage {
+  margin-top: 1rem;
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estimate Charge */
+.container .estimateCharge {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  color: #28a745;
+}
+
+/* Route unsupported warning */
+.container .unsupportedRoute {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* Popup Styles */
+.container .trackingPopup {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.container .trackingPopup h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.container .trackingPopup p {
+  margin-bottom: 1rem;
+}
+
+.container .trackingPopup .text-sm {
+  font-size: 0.875rem;
+}
+
+.container .trackingPopup .text-yellow-600 {
+  color: #e2b97c;
+}
+
+.container .trackingPopup .text-gray-600 {
+  color: #000000;
+}
+
+.container .trackingPopup button {
+  margin-top: 1rem;
+  width: 48%;
+}
+
+.container .trackingPopup .mt-4 {
+  margin-top: 2rem;
+}
+
+.container .trackingPopup .flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container .trackingPopup .space-x-2 {
+  gap: 1rem;
+}
+.black-text-input {
+  color: black;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    
+  }
+
+  .trackingPopup {
+    width: 90%;
+  }
+
+  .trackingPopup .text-sm {
+    font-size: 0.8rem;
+  }
+
+  .trackingPopup button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .subHeader {
+    font-size: 1rem;
+  }
+
+  .estimateCharge {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1rem;
+  }
+
+  .container input[type="text"],
+  .container input[type="number"],
+  .container textarea {
+    font-size: 0.9rem;
+    
+  }
+
+  .container button {
+    font-size: 0.9rem;
+  }
+}

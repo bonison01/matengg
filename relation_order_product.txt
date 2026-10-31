@@ -1,0 +1,85 @@
+ALTER TABLE order_item
+ADD CONSTRAINT unique_id UNIQUE (order_id, product_id);
+
+
+SELECT constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = 'order_item' AND constraint_type = 'UNIQUE';
+
+
+CREATE OR REPLACE FUNCTION update_order_rec(order_id_param TEXT) RETURNS VOID AS $$
+DECLARE
+  total_price_calc DECIMAL;
+  total_calculated_price_calc DECIMAL;
+  item_count_calc INT;
+  store_ids_calc UUID[];
+BEGIN
+  -- Calculate total_price: SUM(price_inr * quantity)
+  SELECT SUM(np.price_inr * oi.quantity)
+  INTO total_price_calc
+  FROM order_item oi
+  JOIN new_products np ON oi.product_id = np.id
+  WHERE oi.order_id = order_id_param;
+
+  -- Calculate total_calculated_price: SUM(discounted_price * quantity)
+  SELECT SUM(np.discounted_price * oi.quantity)
+  INTO total_calculated_price_calc
+  FROM order_item oi
+  JOIN new_products np ON oi.product_id = np.id
+  WHERE oi.order_id = order_id_param;
+
+  -- Calculate item_count: SUM(quantity)
+  SELECT SUM(oi.quantity)
+  INTO item_count_calc
+  FROM order_item oi
+  WHERE oi.order_id = order_id_param;
+
+  -- Calculate store_ids: ARRAY of unique user_id from new_products
+  SELECT ARRAY_AGG(DISTINCT np.user_id)
+  INTO store_ids_calc
+  FROM new_products np
+  JOIN order_item oi ON oi.product_id = np.id
+  WHERE oi.order_id = order_id_param;
+
+  -- Update the order_rec row
+  UPDATE order_rec
+  SET
+    total_price = COALESCE(total_price_calc, 0),
+    total_calculated_price = COALESCE(total_calculated_price_calc, 0),
+    item_count = COALESCE(item_count_calc, 0),
+    store_ids = COALESCE(store_ids_calc, '{}')
+  WHERE order_id = order_id_param;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION trigger_update_order_rec() RETURNS TRIGGER AS $$
+BEGIN
+  IF TG_OP = 'DELETE' THEN
+    PERFORM update_order_rec(OLD.order_id);
+  ELSE
+    PERFORM update_order_rec(NEW.order_id);
+  END IF;
+  RETURN NULL; -- Return value is ignored for AFTER triggers
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- Trigger for INSERT
+CREATE TRIGGER after_insert_order_item
+AFTER INSERT ON order_item
+FOR EACH ROW
+EXECUTE FUNCTION trigger_update_order_rec();
+
+-- Trigger for UPDATE
+CREATE TRIGGER after_update_order_item
+AFTER UPDATE ON order_item
+FOR EACH ROW
+WHEN (OLD.* IS DISTINCT FROM NEW.*)
+EXECUTE FUNCTION trigger_update_order_rec();
+
+-- Trigger for DELETE
+CREATE TRIGGER after_delete_order_item
+AFTER DELETE ON order_item
+FOR EACH ROW
+EXECUTE FUNCTION trigger_update_order_rec();
