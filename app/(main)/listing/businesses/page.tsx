@@ -167,7 +167,8 @@ function MapPicker({ onLocationSelect }: {
         const olaMaps = new OlaMaps({ apiKey: process.env.NEXT_PUBLIC_OLA_API_KEY! });
         olaMapsRef.current = olaMaps;
 
-        const map = olaMaps.init({
+        // FIX: init() returns a Promise in this SDK version, so it must be awaited
+        const map = await olaMaps.init({
           style: "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
           container: "business-map-picker",
           center: [MANIPUR.lng, MANIPUR.lat],

@@ -143,7 +143,8 @@ const DistanceMatrixComponent: React.FC<DistanceMatrixComponentProps> = ({ onDat
         const olaMaps = new OlaMaps({ apiKey: process.env.NEXT_PUBLIC_OLA_API_KEY! });
         setOlaMapsInstance(olaMaps);
 
-        const myMap = olaMaps.init({
+        // FIX: init() returns a Promise in this SDK version, so it must be awaited
+        const myMap = await olaMaps.init({
           style: "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
           container: "map",
           center: [manipurLocation.lng, manipurLocation.lat],
